@@ -1,0 +1,18 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: ingresses-configmap
+  namespace: prod-internal
+data:
+  be__accounting: be-accounting.internal.premfina.com
+  be__bff_mobile_app: be-bff-mobile-app.services.premfina.com
+  be__bff_portal: be-bff-portal.internal.premfina.com
+  be__db_identities: be-db-identities.internal.premfina.com
+  be__insurer_pricing_engine: be-insurer-pricing-engine.internal.premfina.com   
+  be__insurer_policies: be-insurer-policies.internal.premfina.com
+  be__verifications_email: be-verifications-email.internal.premfina.com
+  be__nashville: be-nashville.internal.premfina.com
+  be__ocr_reader: be-ocr-reader.internal.premfina.com
+  be__text_parser: be-text-parser.internal.premfina.com
+  be__user_manager: be-user-manager.internal.premfina.com
+  be__places: be-places.app.premfina.com,be-places.internal.premfina.com

@@ -1,0 +1,10 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: common-configmap
+  namespace: prod-internal
+data:
+  GRPC_SSL_HOST_PORT: 0.0.0.0:443
+  GRPC_HOST_PORT: 0.0.0.0:80
+  REST_SSL_HOST_PORT: 0.0.0.0:8443
+  REST_HOST_PORT: 0.0.0.0:8080  
