@@ -1,0 +1,8 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: kafka-servers-configmap
+  namespace: prod-internal
+data:
+  KAFKA_SERVERS: kafka.internal.premfina.com
+  KAFKA_OFFSET: "latest"   
