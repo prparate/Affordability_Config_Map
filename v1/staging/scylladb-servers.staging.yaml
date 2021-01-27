@@ -5,7 +5,7 @@ metadata:
   namespace: staging-internal
 data:
   SCYLLA_SERVERS: scylla.internal.staging.premfina.com
-  REPLICATION_CLASS: NetworkTopologyStrategy
-  DATA_CENTERS: 'datacenter1'
-  REPLICATION_FACTOR: '3'
+  SCYLLA_REPLICATION_STRATEGY: "{'class': 'NetworkTopologyStrategy', 'datacenter1' : 3}"
+  SCYLLA_TIMEOUT: '10000ms'
+  SCYLLA_CONNECT_TIMEOUT: '10000ms'
    
