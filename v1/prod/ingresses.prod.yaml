@@ -16,3 +16,4 @@ data:
   be__text_parser: be-text-parser.internal.premfina.com
   be__user_manager: be-user-manager.internal.premfina.com
   be__places: be-places.app.premfina.com,be-places.internal.premfina.com
+  fe__portal: hub.services.premdina.com
