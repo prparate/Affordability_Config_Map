@@ -6,6 +6,6 @@ metadata:
 data:
   SCYLLA_SERVERS: scylla.internal.premfina.com
   SCYLLA_REPLICATION_STRATEGY: "{'class': 'NetworkTopologyStrategy', 'datacenter1' : 3}"
-  SCYLLA_TIMEOUT: '10000ms'
-  SCYLLA_CONNECT_TIMEOUT: '10000ms'
+  SCYLLA_TIMEOUT: '10000'
+  SCYLLA_CONNECT_TIMEOUT: '10000'
    
