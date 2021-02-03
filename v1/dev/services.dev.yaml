@@ -1,0 +1,9 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: services-configmap
+  namespace: dev-internal
+data:
+  PF_INSURER_PRICING_ENGINE_SERVICE_HOSTNAME: "be-insurer-pricing-engine-svc"
+  PF_USER_MANAGER_SERVICE_HOSTNAME: "be-user-manager-svc"
+  PF_OCR_READER_SERVICE_HOSTNAME: "be-ocr-reader-svc"
