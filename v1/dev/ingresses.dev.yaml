@@ -8,7 +8,7 @@ data:
   be__bff_mobile_app: be-bff-mobile-app.services.dev.premfina.com
   be__bff_portal: be-bff-portal.internal.dev.premfina.com
   be__db_identities: be-db-identities.internal.dev.premfina.com
-  be__insurer_pricing_engine: be-insurer-pricing-engine.internal.dev.premfina.com   
+  be__insurer_pricing_engine: be-insurer-pricing-engine.internal.dev.premfina.com
   be__insurer_policies: be-insurer-policies.internal.dev.premfina.com
   be__verifications_email: be-verifications-email.internal.dev.premfina.com
   be__nashville: be-nashville.internal.dev.premfina.com
@@ -16,6 +16,6 @@ data:
   be__text_parser: be-text-parser.internal.dev.premfina.com
   be__user_manager: be-user-manager.internal.dev.premfina.com
   be__places: be-places.app.dev.premfina.com,be-places.internal.dev.premfina.com
-  fe__portal: hub.services.dev.premfina.com
+  fe__portal: hub.dev.premfina.com
   be__funders: be-funders.internal.dev.premfina.com
   be__document_renderer: be-document-renderer.internal.dev.premfina.com
