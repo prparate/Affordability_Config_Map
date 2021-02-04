@@ -1,0 +1,9 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: public-url-configmap
+  namespace: dev-internal
+data:
+  fe-portal: "http://hub.dev.premfina.com"
+  be-bff-portal: "http://be-bff-portal.services.dev.premfina.com"
+  be-bff-mobile-app: "http://be-bff-mobile-app.services.dev.premfina.com"
