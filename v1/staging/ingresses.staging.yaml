@@ -19,3 +19,4 @@ data:
   fe__portal: hub.services.staging.premfina.com
   be__funders: be-funders.internal.staging.premfina.com
   be__document_renderer: be-document-renderer.internal.staging.premfina.com
+  be__esignatures_e_sign_co_uk: be-esignatures-e-sign-co-uk.internal.staging.premfina.com
