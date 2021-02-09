@@ -5,7 +5,7 @@ metadata:
   namespace: prod-internal
 data:
   SCYLLA_SERVERS: scylla.internal.premfina.com
-  SCYLLA_REPLICATION_STRATEGY: "{'class': 'NetworkTopologyStrategy', 'datacenter1' : 3}"
+  SCYLLA_REPLICATION_STRATEGY: "{'class': 'NetworkTopologyStrategy', 'PF-UK-DC1' : 3}"
   SCYLLA_TIMEOUT: '10000'
   SCYLLA_CONNECT_TIMEOUT: '10000'
    
