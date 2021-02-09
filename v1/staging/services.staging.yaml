@@ -8,7 +8,3 @@ data:
   PF_USER_MANAGER_SERVICE_HOSTNAME: "be-user-manager-svc"
   PF_OCR_READER_SERVICE_HOSTNAME: "be-ocr-reader-svc"
   PF_FILE_MANAGER_SERVICE_HOSTNAME: "http://be-file-manager.internal.staging.premfina.com"
-  PF_FILE_MANAGER_SERVICE_CLIENT_UUID: "TPFUAT2_f57fe4ca-3fd9-412b-9039-571a82dd0460"
-  PF_ESIGNATURES_PROVIDER_URL: "https://xyz.e-sign.co.uk"
-  PF_ESIGNATURES_PROVIDER_API_PATH: "/api/v1"
-  PF_ESIGNATURES_PROVIDER_AUTH: "Token token=7059ac6024"
