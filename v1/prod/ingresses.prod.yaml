@@ -20,3 +20,4 @@ data:
   be__funders: be-funders.internal.premfina.com
   be__document_renderer: be-document-renderer.internal.premfina.com
   be__esignatures_e_sign_co_uk: be-esignatures-e-sign-co-uk.internal.premfina.com
+  be__bank_checker_experian: be-bank-checker-experian.internal.premfina.com
