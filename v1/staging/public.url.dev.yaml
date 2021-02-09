@@ -1,0 +1,9 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: public-url-configmap
+  namespace: staging-internal
+data:
+  fe__portal: "https://hub.staging.premfina.com"
+  be__bff_portal: "https://be-bff-portal.services.staging.premfina.com"
+  be__bff_mobile_app: "https://be-bff-mobile-app.services.staging.premfina.com"
