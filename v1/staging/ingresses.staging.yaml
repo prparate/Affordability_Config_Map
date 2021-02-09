@@ -16,7 +16,7 @@ data:
   be__text_parser: be-text-parser.internal.staging.premfina.com
   be__user_manager: be-user-manager.internal.staging.premfina.com
   be__places: be-places.app.staging.premfina.com,be-places.internal.staging.premfina.com
-  fe__portal: hub.services.staging.premfina.com
+  fe__portal: "*.services.staging.premfina.com"
   be__funders: be-funders.internal.staging.premfina.com
   be__document_renderer: be-document-renderer.internal.staging.premfina.com
   be__esignatures_e_sign_co_uk: be-esignatures-e-sign-co-uk.internal.staging.premfina.com
