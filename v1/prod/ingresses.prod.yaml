@@ -16,9 +16,10 @@ data:
   be__text_parser: be-text-parser.internal.premfina.com
   be__user_manager: be-user-manager.internal.premfina.com
   be__places: be-places.app.premfina.com,be-places.internal.premfina.com
-  fe__portal: hub.services.premfina.com
+  fe__portal: "*.premfina.com"
   be__funders: be-funders.internal.premfina.com
   be__document_renderer: be-document-renderer.internal.premfina.com
   be__esignatures_e_sign_co_uk: be-esignatures-e-sign-co-uk.internal.premfina.com
   be__bank_checker_experian: be-bank-checker-experian.internal.premfina.com
   be__bank_checker: be-bank-checker.internal.premfina.com
+
