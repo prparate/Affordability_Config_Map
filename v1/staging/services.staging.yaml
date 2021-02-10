@@ -8,3 +8,4 @@ data:
   PF_USER_MANAGER_SERVICE_HOSTNAME: "be-user-manager-svc"
   PF_OCR_READER_SERVICE_HOSTNAME: "be-ocr-reader-svc"
   PF_FILE_MANAGER_SERVICE_HOSTNAME: "http://be-file-manager.internal.staging.premfina.com"
+  PF_BANK_CHECKER_EXPERIAN_SERVICE_HOSTNAME: "http://be-bank-checker-experian-svc"
