@@ -4,6 +4,8 @@ metadata:
   name: ingresses-configmap
   namespace: dev-internal
 data:
+  elasticsearch: elastic-mon.internal.dev.premfina.com
+  kibana: kibana.app.dev.premfina.com
   be__accounting: be-accounting.internal.dev.premfina.com
   be__bff_mobile_app: be-bff-mobile-app.services.dev.premfina.com
   be__bff_portal: be-bff-portal.internal.dev.premfina.com
