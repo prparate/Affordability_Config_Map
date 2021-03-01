@@ -10,8 +10,9 @@ data:
   be__bff_mobile_app: be-bff-mobile-app.internal.staging.premfina.com
   be__bff_mobile_app_rest: be-bff-mobile-app-rest.services.staging.premfina.com
   be__bff_portal: be-bff-portal.internal.staging.premfina.com
+  be__bff_portal_rest: be-bff-portal-rest.internal.staging.premfina.com
   be__db_identities: be-db-identities.internal.staging.premfina.com
-  be__insurer_pricing_engine: be-insurer-pricing-engine.internal.staging.premfina.com   
+  be__insurer_pricing_engine: be-insurer-pricing-engine.internal.staging.premfina.com
   be__insurer_policies: be-insurer-policies.internal.staging.premfina.com
   be__verifications_email: be-verifications-email.internal.staging.premfina.com
   be__nashville: be-nashville.internal.staging.premfina.com
@@ -26,4 +27,3 @@ data:
   be__esignatures_e_sign_co_uk_pub: e-sign-co-uk.services.staging.premfina.com
   be__bank_checker_experian: be-bank-checker-experian.internal.staging.premfina.com
   be__bank_checker: be-bank-checker.internal.staging.premfina.com
-
