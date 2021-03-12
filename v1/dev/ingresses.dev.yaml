@@ -27,3 +27,4 @@ data:
   be__esignatures_e_sign_co_uk_pub: e-sign-co-uk.services.dev.premfina.com
   be__bank_checker_experian: be-bank-checker-experian.internal.dev.premfina.com
   be__bank_checker: be-bank-checker.internal.dev.premfina.com
+  be__funders_importer: be-funders-importer.internal.dev.premfina.com
