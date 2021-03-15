@@ -10,7 +10,7 @@ data:
   be__bff_mobile_app: be-bff-mobile-app.internal.premfina.com
   be__bff_mobile_app_rest: be-bff-mobile-app-rest.services.premfina.com
   be__bff_portal: be-bff-portal.internal.premfina.com
-  be__bff_portal_rest: be-bff-portal-rest.internal.premfina.com
+  be__bff_portal_rest: be-bff-portal-rest.services.premfina.com
   be__db_identities: be-db-identities.internal.premfina.com
   be__insurer_pricing_engine: be-insurer-pricing-engine.internal.premfina.com
   be__insurer_policies: be-insurer-policies.internal.premfina.com
