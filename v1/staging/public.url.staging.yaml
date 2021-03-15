@@ -6,4 +6,5 @@ metadata:
 data:
   fe__portal: "https://hub.staging.premfina.com"
   be__bff_portal: "https://be-bff-portal.services.staging.premfina.com"
+  be__bff_portal_rest: "https://be-bff-portal-rest.services.staging.premfina.com/v1"
   be__bff_mobile_app: "https://be-bff-mobile-app.services.staging.premfina.com"
