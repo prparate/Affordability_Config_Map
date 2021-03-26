@@ -28,3 +28,4 @@ data:
   be__bank_checker_experian: be-bank-checker-experian.internal.dev.premfina.com
   be__bank_checker: be-bank-checker.internal.dev.premfina.com
   be__funders_importer: be-funders-importer.internal.dev.premfina.com
+  be__web_sockets: be-web-sockets.internal.dev.premfina.com
