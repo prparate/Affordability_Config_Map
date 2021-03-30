@@ -29,3 +29,4 @@ data:
   be__bank_checker: be-bank-checker.internal.premfina.com
   be__funders_importer: be-funders-importer.internal.premfina.com
   be__web_sockets: be-web-sockets.internal.premfina.com
+  be__global_workspace_auth: be-global-workspace-auth.internal.premfina.com
