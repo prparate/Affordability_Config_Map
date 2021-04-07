@@ -5,7 +5,7 @@ metadata:
   namespace: staging-internal
 data:
   SCYLLA_SERVERS: scylla.internal.staging.premfina.com
-  PUBLIC_SCYLLA_SERVERS: scylla-public.internal.staging.premfina.com
+  GLOBAL_SCYLLA_SERVERS: scylla-global.internal.staging.premfina.com
   SCYLLA_REPLICATION_STRATEGY: "{'class': 'NetworkTopologyStrategy', 'datacenter1' : 3}"
   SCYLLA_TIMEOUT: '10000'
   SCYLLA_CONNECT_TIMEOUT: '10000'
