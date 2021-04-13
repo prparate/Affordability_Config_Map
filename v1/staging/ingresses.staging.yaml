@@ -30,3 +30,5 @@ data:
   be__funders_importer: be-funders-importer.internal.staging.premfina.com
   be__web_sockets: be-web-sockets.internal.staging.premfina.com
   be__global_workspace_auth: be-global-workspace-auth.internal.staging.premfina.com
+  be__payments_gateway: be-payments-gateway.internal.staging.premfina.com
+  be__payments_clearbank: be-payments-clearbank.internal.staging.premfina.com
