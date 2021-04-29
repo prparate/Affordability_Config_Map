@@ -1,15 +1,14 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cle-services-pf-dev-configmap
+  name: cle-services-configmap
   namespace: dev-internal
 data:
-  PF_BANK_CHECKER_SERVICE_URL: ""
-  PF_CUSTOMER_PORTAL_HOST: ""
-  PF_FILE_MANAGER_SERVICE_HOSTNAME: ""
-  PF_ESIGNATURE_URL: ""
-  PF_CRA_URL: ""
-  PF_FINANCIAL_REPORTING_URL: ""
-  PF_PLACES_URL: ""
-  PF_AGREEMENTFILES_URL: ""
-  PF_DATAVALIDATION_URL: ""
+  PF_BANK_CHECKER_SERVICE_URL: "tbc"
+  PF_CUSTOMER_PORTAL_HOST: "http://be-customers-api.internal.dev.premfina.com"
+  PF_FILE_MANAGER_SERVICE_HOSTNAME: "http://be-file-manager.internal.dev.premfina.com/"
+  PF_CRA_URL: "http://be-cra.internal.dev.premfina.com/v1/"
+  PF_FINANCIAL_REPORTING_URL: "http://be-financial-reporting.internal.dev.premfina.com/"
+  PF_PLACES_URL: "http://be-places.internal.dev.premfina.com/"
+  PF_AGREEMENTFILES_URL: "http://be-agreement-files.internal.dev.premfina.com/"
+  PF_DATAVALIDATION_URL: "http://be-data-validation.internal.dev.premfina.com/"
