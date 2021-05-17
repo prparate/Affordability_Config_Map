@@ -6,7 +6,7 @@ metadata:
 data:
   PF_INSURER_PRICING_ENGINE_SERVICE_HOSTNAME: "be-insurer-pricing-engine-svc"
   PF_USER_MANAGER_SERVICE_HOSTNAME: "be-user-manager-svc"
-  PF_GLOBAL_WORKSPACE_AUTH_SERVICE_HOSTNAME: "be-global-workspace-auth.internal.dev.premfina.com"
+  PF_GLOBAL_WORKSPACE_AUTH_SERVICE_HOSTNAME: "be-global-workspace-auth-svc"
   PF_OCR_READER_SERVICE_HOSTNAME: "be-ocr-reader-svc"
   PF_FILE_MANAGER_SERVICE_HOSTNAME: "http://be-file-manager.internal.dev.premfina.com"
   PF_BANK_CHECKER_EXPERIAN_SERVICE_HOSTNAME: "http://be-bank-checker-experian-svc"
