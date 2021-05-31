@@ -1,0 +1,16 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cle-oracle-pf-sandbox-configmap
+  namespace: staging-internal
+data:
+  PF_DB_SID: "TPFUAT"
+  PF_SPRING_DATASOURCE_URL: "jdbc:oracle:thin:@//10.5.6.4:1521/TPFUAT"
+  PF_SPRING_DATASOURCE_DRIVER_CLASS_NAME: "oracle.jdbc.OracleDriver"
+  PF_SPRING_DATASOURCE_TYPE: "com.zaxxer.hikari.HikariDataSource"
+  PF_SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE: "50"
+  PF_SPRING_DATASOURCE_HIKARI_MAX_LIFETIME: "4600"
+  SPRING_DATASOURCE_HIKARI_IDLE_TIMEOUT: "4600"
+  SPRING_JPA_PROPERTES_HIBERNATE_DIALECT: "org.hibernate.dialect.Oracle9iDialect"
+  SPRING_TASK_SCHEDULING_POOL_SIZE: "6"
+  SPRING_JPA_HIBERNATE_NAMING_PHYSICAL_STRATEGY: "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl"
