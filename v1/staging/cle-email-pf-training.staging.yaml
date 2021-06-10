@@ -1,0 +1,18 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cle-email-pf-training-configmap
+  namespace: staging-internal
+data:
+  PF_EMAIL_HOST_NAME: "premfina-com.mail.protection.outlook.com"
+  PF_EMAIL_NAME_FROM: "PF API TPFUAT2"
+  PF_EMAIL_EMAILID_FROM: "noreply@premfina.com"
+  PF_EMAIL_NAME_TO: "IT"
+  PF_EMAIL_EMAILID_TO: "support@premfina.com"
+  PF_EMAIL_NAME_CC: "Premfina Support"
+  PF_EMAIL_EMAILID_CC: "support@premfina.com"
+  PF_EMAIL_SUBJECT_SUFFIX: ""
+  PF_EMAIL_SUBJECT_PREFIX: ""
+  PF_EMAIL_ENABLED: "true"
+  PF_EMAIL_SMTP_AUTH: "true"
+  PF_EMAIL_SMTP_PORT: "25"
