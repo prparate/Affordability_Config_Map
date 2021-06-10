@@ -1,0 +1,10 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cle-integration-pf-prod-a-configmap
+  namespace: prod-internal
+data:
+  PF_WEBSERVICES_HOSTPORT: "10.4.3.201:8081"
+  PF_PANRENDERX_HOSTPORT: "10.4.5.200:8081"
+  PF_WEBHOOKS_URL: "http://10.4.3.200:5000"
+  PF_ESIGNATURE_BASEURL: "https://be-esignatures-e-sign-co-uk.internal.premfina.com/"
