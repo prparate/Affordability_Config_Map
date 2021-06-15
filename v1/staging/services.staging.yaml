@@ -12,3 +12,4 @@ data:
   PF_BANK_CHECKER_EXPERIAN_SERVICE_HOSTNAME: "http://be-bank-checker-experian-svc"
   PF_CUSTOMER_PORTAL_HOST: "http://be-customers-api.internal.training.premfina.com"
   PF_PAYMENTS_STRIPE_SERVICE_URL: "http://be-payments-stripe.internal.staging.premfina.com"
+  PF_DATA_FETCHER_ORACLE_SERVICE_HOSTNAME: "http://be-data-fetcher-oracle.internal.staging.premfina.com"
