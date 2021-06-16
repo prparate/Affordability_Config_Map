@@ -31,4 +31,6 @@ data:
   be__web_sockets: be-web-sockets.internal.dev.premfina.com
   be__global_workspace_auth: be-global-workspace-auth.internal.dev.premfina.com
   be__payments_gateway: be-payments-gateway.internal.dev.premfina.com
+  be__payments_gateway_rest: be-payments-gateway-rest.services.dev.premfina.com
   be__payments_clearbank: be-payments-clearbank.internal.dev.premfina.com
+  be__payments_clearbank_rest: be-payments-clearbank-rest.services.dev.premfina.com
