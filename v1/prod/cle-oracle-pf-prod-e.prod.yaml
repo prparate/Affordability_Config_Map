@@ -1,0 +1,16 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cle-oracle-pf-prod-e-configmap
+  namespace: prod-internal
+data:
+  PF_DB_SID: "DBPRODE"
+  PF_SPRING_DATASOURCE_URL: "jdbc:oracle:thin:@(DESCRIPTION=(FAILOVER=on)(LOAD_BALANCE=off)(CONNECT_TIMEOUT=3)(RETRY_COUNT=1)(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=db-oracle.internal.premfina.com)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=db-oracle-we.internal.premfina.com)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=DBPRODEDG)))"
+  PF_SPRING_DATASOURCE_DRIVER_CLASS_NAME: "oracle.jdbc.OracleDriver"
+  PF_SPRING_DATASOURCE_TYPE: "com.zaxxer.hikari.HikariDataSource"
+  PF_SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE: "50"
+  PF_SPRING_DATASOURCE_HIKARI_MAX_LIFETIME: "1800000"
+  SPRING_DATASOURCE_HIKARI_IDLE_TIMEOUT: "30000"
+  SPRING_JPA_PROPERTES_HIBERNATE_DIALECT: "org.hibernate.dialect.Oracle9iDialect"
+  SPRING_TASK_SCHEDULING_POOL_SIZE: "6"
+  SPRING_JPA_HIBERNATE_NAMING_PHYSICAL_STRATEGY: "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl"
