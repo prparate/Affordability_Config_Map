@@ -7,3 +7,4 @@ data:
   PF_ESIGNATURES_PROVIDER_URL: "https://xyz.e-sign.co.uk"
   PF_BANK_WIZARD_AUTH_URL: "https://secure.authenticator.uat.uk.experian.com/WASPAuthenticator/TokenService.asmx/LoginWithCertificate?application={app_name}&checkIP=false"
   PF_BANK_WIZARD_SERVICE_URL: "https://uat.bankwizardondemand.uk.experian.com/absolute/server/bankwizardservice_v1_1.asmx"
+  PF_CLEARBANK_API_BASE_URL: "https://institution-api-sim.clearbank.co.uk"
