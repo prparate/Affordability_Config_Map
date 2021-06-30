@@ -9,7 +9,7 @@ data:
   PF_FILE_MANAGER_SERVICE_HOSTNAME: "http://be-file-manager.internal.staging.premfina.com/"
   PF_CRA_URL: "http://be-cra.internal.staging.premfina.com/v1/"
   PF_FINANCIAL_REPORTING_URL: "http://be-financial-reporting.internal.staging.premfina.com/"
-  PF_PLACES_URL: "http://be-places.internal.staging.premfina.com/"
+  PF_PLACES_URL: "https://be-places.internal.staging.premfina.com/"
   PF_AGREEMENTFILES_URL: "http://be-agreement-files.internal.staging.premfina.com/"
   PF_DATAVALIDATION_URL: "http://be-data-validation.internal.staging.premfina.com/"
   PF_STATEMENTS_BASEURL: "http://be-statements.internal.staging.premfina.com/v1/"
