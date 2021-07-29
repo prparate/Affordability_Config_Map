@@ -13,3 +13,4 @@ data:
   PF_AGREEMENTFILES_URL: "http://be-agreement-files.internal.staging.premfina.com/"
   PF_DATAVALIDATION_URL: "http://be-data-validation.internal.staging.premfina.com/"
   PF_STATEMENTS_BASEURL: "http://be-statements.internal.staging.premfina.com/v1/"
+  PF_FACILITY_FEES_URL : "http://be-facility-fees.internal.staging.premfina.com/"
