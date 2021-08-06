@@ -8,3 +8,4 @@ data:
   PF_PANRENDERX_HOSTPORT: "10.5.5.200:8084"
   PF_WEBHOOKS_URL: "http://10.15.5.102:5000"
   PF_ESIGNATURE_BASEURL: "https://be-esignatures-e-sign-co-uk.internal.staging.premfina.com/"
+  PF_WEBSERVICES_URL: "http://10.5.3.200:8084/pancredit-web-services"
