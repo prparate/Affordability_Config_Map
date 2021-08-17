@@ -15,3 +15,4 @@ data:
   PF_PAYMENTS_STRIPE_SERVICE_URL: "http://be-payments-stripe.internal.premfina.com"
   PF_DATA_FETCHER_ORACLE_SERVICE_HOSTNAME: "http://be-data-fetcher-oracle.internal.premfina.com"
   PF_SLACK_NOTIFICATIONS_SERVICE_HOSTNAME: "http://be-slack-notifications.internal.premfina.com"
+  PF_CLE_API_APISUPER_SERVICE_HOSTNAME_TPFPROD1: "http://cle-api-pf-prod-p.services.premfina.com"
