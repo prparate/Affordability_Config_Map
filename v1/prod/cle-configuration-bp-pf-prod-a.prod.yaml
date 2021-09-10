@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cle-configuration-bp-pf-training-configmap
+  name: cle-configuration-bp-pf-prod-a-configmap
   namespace: prod-internal
 data:
   PF_EMAIL_TEMPLATE_PATH: "/mnt/pfprodukfilestorage/prod-system-files/email-templates/prod-a"
