@@ -1,0 +1,17 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cle-configuration-bp-pf-prod-a-configmap
+  namespace: prod-internal
+data:
+  PF_EMAIL_TEMPLATE_PATH: "/mnt/pfprodukfilestorage/prod-system-files/email-templates/prod-a"
+  PF_EMAIL_RATE_LIMIT_QUANTITY: "30"
+  PF_EMAIL_RATE_LIMIT_PERIOD_MILLISECONDS: "60000"
+  PF_EMAIL_MAX_CONCURRENT_CONNECTIONS: "3"
+  PF_TIME_BETWEEN_EMAIL_RETRIES: "5000"
+  PF_MAX_NUMBER_RETRIES: "3"
+  PF_DOCUMENT_CONSOLE_NUMBER_THREADS: "20"
+  PF_ENABLE_CHAT: "N"
+  PF_ENABLE_GOOGLE_ANALYTICS: "Y"  
+  PF_EDOCUMENT_MAX_SIZE: "10240"
+  
