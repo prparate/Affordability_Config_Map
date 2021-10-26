@@ -13,4 +13,4 @@ data:
   PF_AGREEMENTFILES_URL: "http://be-agreement-files.internal.dev.premfina.com/"
   PF_DATAVALIDATION_URL: "http://be-data-validation.internal.dev.premfina.com/"
   PF_STATEMENTS_BASEURL: "http://be-statements.internal.dev.premfina.com/v1/"
-  PF_FACILITY_FEES_URL : "http://be-facility-fees.internal.dev.premfina.com/"
+  PF_FACILITY_FEES_URL: "http://be-facility-fees.internal.dev.premfina.com/"
