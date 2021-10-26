@@ -33,4 +33,3 @@ data:
   be__payments_gateway: be-payments-gateway.internal.dev.premfina.com
   be__payments_gateway_rest: be-payments-gateway-rest.services.dev.premfina.com
   be__integrations_clearbank: be-integrations-clearbank.internal.dev.premfina.com
-  be__integrations_clearbank_rest: be-integrations-clearbank-rest.services.dev.premfina.com
