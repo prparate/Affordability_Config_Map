@@ -8,6 +8,7 @@ pipelines:
             username: $AZURE_REGISTRY_USERNAME
             password: $AZURE_REGISTRY_PASSWORD
           deployment: develop
+          trigger: manual
           script:
             - cd v1
             - /bin/sh ./scripts/bash/pipeline-deploy.sh
@@ -18,6 +19,7 @@ pipelines:
             username: $AZURE_REGISTRY_USERNAME
             password: $AZURE_REGISTRY_PASSWORD
           deployment: staging
+          trigger: manual
           script:
             - cd v1
             - /bin/sh ./scripts/bash/pipeline-deploy.sh
@@ -28,6 +30,7 @@ pipelines:
             username: $AZURE_REGISTRY_USERNAME
             password: $AZURE_REGISTRY_PASSWORD
           deployment: production
+          trigger: manual
           script:
             - cd v1
             - /bin/sh ./scripts/bash/pipeline-deploy.sh
