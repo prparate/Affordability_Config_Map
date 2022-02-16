@@ -1,0 +1,8 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: redis-configmap
+  namespace: prod-internal
+data:
+  REDIS_SERVER: pf-prod-uk-application-cache.redis.cache.windows.net:6380
+  REDIS_SEPARATOR: ':'

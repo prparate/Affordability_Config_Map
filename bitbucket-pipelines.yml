@@ -1,0 +1,33 @@
+pipelines:
+  tags:
+    '**': # this runs as default for any tag not elsewhere defined
+      - step:
+          name: Deploy Configmaps Develop
+          image:
+            name: premfinaukcontainerregistry.azurecr.io/docker/backend/pipeline_base_azure:1.5.1
+            username: $AZURE_REGISTRY_USERNAME
+            password: $AZURE_REGISTRY_PASSWORD
+          deployment: develop
+          script:
+            - cd v1
+            - /bin/sh ./scripts/bash/pipeline-deploy.sh
+      - step:
+          name: Deploy Configmaps Staging
+          image:
+            name: premfinaukcontainerregistry.azurecr.io/docker/backend/pipeline_base_azure:1.5.1
+            username: $AZURE_REGISTRY_USERNAME
+            password: $AZURE_REGISTRY_PASSWORD
+          deployment: staging
+          script:
+            - cd v1
+            - /bin/sh ./scripts/bash/pipeline-deploy.sh
+      - step:
+          name: Deploy Configmaps Production
+          image:
+            name: premfinaukcontainerregistry.azurecr.io/docker/backend/pipeline_base_azure:1.5.1
+            username: $AZURE_REGISTRY_USERNAME
+            password: $AZURE_REGISTRY_PASSWORD
+          deployment: production
+          script:
+            - cd v1
+            - /bin/sh ./scripts/bash/pipeline-deploy.sh

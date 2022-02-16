@@ -1,0 +1,8 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: redis-configmap
+  namespace: staging-internal
+data:
+  REDIS_SERVER: pf-staging-uk-application-cache.redis.cache.windows.net:6380
+  REDIS_SEPARATOR: ':'
