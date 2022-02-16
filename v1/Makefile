@@ -6,7 +6,7 @@ help:		## Displays this help.
 update-env:	## Create/Update ConfigMap for the desired environment. [requires ENV=${value}, ex: ENV=dev]
 	@for dir in ./$$ENV/* ; do \
 		echo $$dir ; \
-		kubectl replace -f $$dir ; \
+		kubectl create configmap $$dir --dry-run=client -o yaml | kubectl apply -f - ; \
 	done
 
 .PHONY: update-one
