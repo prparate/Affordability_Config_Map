@@ -8,7 +8,6 @@ pipelines:
             username: $AZURE_REGISTRY_USERNAME
             password: $AZURE_REGISTRY_PASSWORD
           deployment: develop
-          trigger: manual
           script:
             - cd v1
             - /bin/sh ./scripts/bash/pipeline-deploy.sh
