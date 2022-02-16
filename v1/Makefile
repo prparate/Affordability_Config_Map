@@ -2,8 +2,8 @@
 help:		## Displays this help.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-.PHONY: update-all
-update-all:	## Create/Update ConfigMap for the desired environment. [requires ENV=${value}, ex: ENV=dev]
+.PHONE: update-env
+update-env:	## Create/Update ConfigMap for the desired environment. [requires ENV=${value}, ex: ENV=dev]
 	@for dir in ./$$ENV/* ; do \
 		echo $$dir ; \
 		kubectl replace -f $$dir ; \
