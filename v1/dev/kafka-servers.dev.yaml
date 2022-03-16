@@ -4,7 +4,6 @@ metadata:
   name: kafka-servers-configmap
   namespace: dev-internal
 data:
-  # KAFKA_SERVERS: kafka.internal.dev.premfina.com
-  KAFKA_SERVERS: "10.6.5.6:9092,10.6.5.7:9092"
+  KAFKA_SERVERS: "kafka.internal.dev.premfina.com"
   KAFKA_OFFSET: "latest"
 
