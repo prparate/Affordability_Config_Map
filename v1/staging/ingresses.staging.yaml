@@ -32,5 +32,4 @@ data:
   be__global_workspace_auth: be-global-workspace-auth.internal.staging.premfina.com
   be__payments_gateway: be-payments-gateway.internal.staging.premfina.com
   be__payments_gateway_rest: be-payments-gateway-rest.services.staging.premfina.com
-  be__payments_clearbank: be-payments-clearbank.internal.staging.premfina.com
-  be__payments_clearbank_rest: be-payments-clearbank-rest.services.staging.premfina.com
+  be__integrations_clearbank: be-integrations-clearbank.internal.staging.premfina.com
