@@ -7,5 +7,8 @@ data:
   SCYLLA_SERVERS: scylla.internal.dev.premfina.com
   GLOBAL_SCYLLA_SERVERS: scylla-global.internal.dev.premfina.com
   SCYLLA_REPLICATION_STRATEGY: "{'class': 'NetworkTopologyStrategy', 'datacenter1' : 1}"
+  SCYLLA_ENCRYPTION_KEY: 'nil'
+  SCYLLA_SSL: 'nil'
   SCYLLA_TIMEOUT: '10000'
   SCYLLA_CONNECT_TIMEOUT: '10000'
+  SCYLLA_DEFAULT_PAGE_SIZE: '10'
