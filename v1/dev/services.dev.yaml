@@ -14,5 +14,7 @@ data:
   PF_PAYMENTS_STRIPE_SERVICE_URL: "http://be-payments-stripe.internal.dev.premfina.com"
   PF_DATA_FETCHER_ORACLE_SERVICE_HOSTNAME: "http://be-data-fetcher-oracle.internal.dev.premfina.com"
   PF_SLACK_NOTIFICATIONS_SERVICE_HOSTNAME: "http://be-slack-notifications.internal.dev.premfina.com"
-  PF_CLE_API_APISUPER_SERVICE_HOSTNAME_TPFUAT2: "http://cle-api-pf-dev.services.dev.premfina.com"
+  PF_CLE_API_SERVICE_HOSTNAME_TPFUAT2: "http://cle-api-pf-dev.services.dev.premfina.com"
+  PF_CLE_API_SERVICE_HOSTNAME_DBTEST: "http://cle-api-pf-test.services.dev.premfina.com"
+  PF_CLE_API_SERVICE_HOSTNAME_DBRND: "http://cle-api-pf-rnd.services.dev.premfina.com"
   PF_EMAIL_SERVICE_HOSTNAME: "http://be-email.internal.dev.premfina.com"
