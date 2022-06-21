@@ -5,6 +5,7 @@ metadata:
   namespace: prod-internal
 data:
   PF_ESIGNATURES_PROVIDER_URL: "https://app.e-sign.co.uk"
+  PF_YOTI_WEBHOOK_ENDPOINT: "https://be-gateway.internal.premfina.com/v1/session/complete"
   PF_BANK_WIZARD_AUTH_URL: "https://secure.authenticator.uk.experian.com/WASPAuthenticator/TokenService.asmx/LoginWithCertificate?application={app_name}&checkIP=false"
   PF_BANK_WIZARD_SERVICE_URL: "https://bankwizardondemand.uk.experian.com/absolute/server/bankwizardservice_v1_1.asmx"
   PF_CLEARBANK_API_BASE_URL: "https://institution-api.clearbank.co.uk/"
