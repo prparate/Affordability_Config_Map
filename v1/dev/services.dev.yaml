@@ -18,4 +18,6 @@ data:
   PF_CLE_API_SERVICE_HOSTNAME_DBTEST: "http://cle-api-pf-test.services.dev.premfina.com"
   PF_CLE_API_SERVICE_HOSTNAME_DBRND: "http://cle-api-pf-rnd.services.dev.premfina.com"
   PF_EMAIL_SERVICE_HOSTNAME: "http://be-email.internal.dev.premfina.com"
+  PF_SMS_SERVICE_HOSTNAME: "http://be-sms-amazon-aws.internal.dev.premfina.com"  # We don't have a DNS for this service
   PF_CRA_EXPERIAN_SERVICE_HOSTNAME: "http://10.6.0.5:8027"
+  PF_AGREEMENT_FILES_SERVICE_HOSTNAME: "http://10.6.0.5:8017"  # We don't have a DNS for this service
