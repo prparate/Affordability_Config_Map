@@ -18,3 +18,4 @@ data:
   PF_CLE_API_APISUPER_SERVICE_HOSTNAME_TPFPROD1: "http://cle-api-pf-prod-p.services.premfina.com"
   PF_EMAIL_SERVICE_HOSTNAME: "http://be-email.internal.premfina.com"
   PF_CRA_EXPERIAN_SERVICE_HOSTNAME: "http://10.4.0.7:8027"
+  PF_CRA_SERVICE_HOSTNAME: "http://be-cra.internal.premfina.com"
