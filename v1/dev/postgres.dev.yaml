@@ -7,3 +7,4 @@ data:
   HOSTNAME: pf-dev-uk-core-db.postgres.database.azure.com
   PORT: '5432'
   SSL_MODE: require
+  DEBUG: 1
