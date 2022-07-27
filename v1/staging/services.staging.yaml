@@ -17,3 +17,8 @@ data:
   PF_CLE_API_APISUPER_SERVICE_HOSTNAME_TPFUAT: "http://cle-api-pf-sandbox.services.staging.premfina.com"
   PF_EMAIL_SERVICE_HOSTNAME: "http://be-email.internal.staging.premfina.com"
   PF_CRA_EXPERIAN_SERVICE_HOSTNAME: "http://10.5.3.8:8027"
+  PF_CRA_CREDIT_SAFE_SERVICE_HOSTNAME: "http://10.5.3.8:8044"
+  PF_CRA_LEXIS_NEXIS_SERVICE_HOSTNAME: "https://be-cra-lexisnexis.internal.staging.premfina.com"
+  PF_AFFORDABILITY_HOSTNAME: "http://be-affordability.internal.staging.premfina.com"
+  PF_ID_UPLOAD_HOSTNAME: "be-id-upload.internal.staging.premfina.com:443"
+  PF_AGREEMENT_FILES_SERVICE_HOSTNAME: "http://10.5.3.8:8017"  # We don't have a DNS for this service
