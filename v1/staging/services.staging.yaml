@@ -9,6 +9,7 @@ data:
   PF_GLOBAL_WORKSPACE_AUTH_SERVICE_HOSTNAME: "be-global-workspace-auth-svc"
   PF_OCR_READER_SERVICE_HOSTNAME: "be-ocr-reader-svc"
   PF_FILE_MANAGER_SERVICE_HOSTNAME: "http://be-file-manager.internal.staging.premfina.com"
+  PF_BANK_CHECKER_SERVICE_HOSTNAME: "http://be-bank-checker.internal.staging.premfina.com"
   PF_BANK_CHECKER_EXPERIAN_SERVICE_HOSTNAME: "http://be-bank-checker-experian-svc"
   PF_CUSTOMER_PORTAL_HOST: "http://be-customers-api.internal.training.premfina.com"
   PF_PAYMENTS_STRIPE_SERVICE_URL: "http://be-payments-stripe.internal.staging.premfina.com"
@@ -18,7 +19,7 @@ data:
   PF_EMAIL_SERVICE_HOSTNAME: "http://be-email.internal.staging.premfina.com"
   PF_CRA_EXPERIAN_SERVICE_HOSTNAME: "http://10.5.3.8:8027"
   PF_CRA_CREDIT_SAFE_SERVICE_HOSTNAME: "http://10.5.3.8:8044"
-  PF_CRA_LEXIS_NEXIS_SERVICE_HOSTNAME: "https://be-cra-lexisnexis.internal.staging.premfina.com"
-  PF_AFFORDABILITY_HOSTNAME: "http://be-affordability.internal.staging.premfina.com"
-  PF_ID_UPLOAD_HOSTNAME: "be-id-upload.internal.staging.premfina.com:443"
+  PF_CRA_LEXIS_NEXIS_SERVICE_HOSTNAME: "https://be-cra-lexisnexis-svc"
+  PF_AFFORDABILITY_SERVICE_HOSTNAME: "http://be-affordability-svc"
+  PF_ID_UPLOAD_SERVICE_HOSTNAME: "be-id-upload-svc:8443"
   PF_AGREEMENT_FILES_SERVICE_HOSTNAME: "http://10.5.3.8:8017"  # We don't have a DNS for this service
