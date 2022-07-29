@@ -4,6 +4,7 @@ metadata:
   name: services-configmap
   namespace: dev-internal
 data:
+  PF_ENVIRONMENT_NAME: "development"
   PF_INSURER_PRICING_ENGINE_SERVICE_HOSTNAME: "be-insurer-pricing-engine-svc"
   PF_USER_MANAGER_SERVICE_HOSTNAME: "be-user-manager-svc"
   PF_GLOBAL_WORKSPACE_AUTH_SERVICE_HOSTNAME: "be-global-workspace-auth-svc"
