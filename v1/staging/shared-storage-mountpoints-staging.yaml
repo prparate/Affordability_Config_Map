@@ -1,0 +1,7 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: shared-storage-mountpoints-configmap
+  namespace: staging-internal
+data:
+  PF_CRA_REPORT_SHARED_STORAGE_PATH: "/mnt/pfstagingukfilestorage/staging-system-files/be__cra/cra_report"
