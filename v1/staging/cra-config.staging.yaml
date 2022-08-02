@@ -1,0 +1,2011 @@
+
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cra-config
+  namespace: staging-internal
+data:
+  config.json: |
+    {
+        "debug": true,
+        "endpoint": {
+            "host": "0.0.0.0"
+        },
+        "client": {
+            "uuid": "5e511577-406c-4cc4-9cb5-ba3caae6ce55",
+            "name": "be__cra"
+        },
+        "year_length": 365,
+        "cle_environments": [
+            "BENNUAT1",
+            "TPFSUPP1",
+            "TPFTRN1",
+            "TPFUAT",
+            "DBDEMO",
+            "BENNTS01"
+        ],
+        "lexis_nexis_environments": [
+            "BENNUAT1",
+            "TPFSUPP1",
+            "TPFTRN1",
+            "TPFUAT",
+            "DBDEMO",
+            "BENNTS01"
+        ],
+        "affordability_environments": [
+            "BENNUAT1",
+            "TPFSUPP1",
+            "TPFTRN1",
+            "TPFUAT",
+            "DBDEMO",
+            "BENNTS01"
+        ],
+        "cra":{
+            "provider_default_personal":"experian",
+            "provider_default_commercial":"credit_safe",
+            "credit_safe":{
+            "name":"Credit Safe",
+            "endpoint":{
+                "external":"http://127.0.0.1:8044/v1/"
+            },
+            "fields_display":[
+                "$.checks.aml.pass",
+                "$.checks.affordability.pass",
+                "$.checks.credit.pass",
+                "$.checks.defaults.pass",
+                "$.checks.defaults_affordability_credit_aml.pass",
+                "$.checks.defaults_affordability.pass",
+                "$.checks.defaults_credit.pass",
+                "$.checks.defaults_aml.pass",
+                "$.checks.affordability_credit.pass",
+                "$.checks.affordability_aml.pass",
+                "$.checks.credit_aml.pass",
+                "$.checks.defaults_affordability_credit.pass",
+                "$.checks.defaults_affordability_aml.pass",
+                "$.checks.defaults_credit_aml.pass",
+                "$.checks.affordability_credit_aml.pass",
+                "$.checks.defaults.forced_pass",
+                "$.checks.aml.forced_pass",
+                "$.checks.affordability.forced_pass",
+                "$.checks.credit.forced_pass",
+                "$.checks.aml.fail_reason",
+                "$.checks.credit.forced_pass",
+                "$.checks.credit.data.companyStatus",
+                "$.checks.credit.data.currentCreditRating",
+                "$.checks.credit.data.creditLimit",
+                "$.checks.credit.data.companyRegistrationDate",
+                "$.checks.credit.data.previousCreditRating",
+                "$.checks.credit.data.presentAppointments",
+                "$.checks.credit.data.disqualified",
+                "$.checks.credit.data.workingCapital",
+                "$.checks.credit.data.netWorth",
+                "$.checks.credit.data.paymentTrend",
+                "$.checks.credit.data.exactRegistered",
+                "$.checks.credit.data.possibleRegistered",
+                "$.checks.credit.data.lastCCJDate",
+                "$.checks.credit.data.lastCCJAmount",
+                "$.checks.credit.data.commentaryTextNegative",
+                "$.checks.credit.data.numberOfNegative",
+                "$.checks.credit.data.commentaryTextNeutral",
+                "$.checks.credit.data.numberOfNeutral",
+                "$.checks.credit.data.commentaryTextPositive",
+                "$.checks.credit.data.numberOfPositive",
+                "$.checks.credit.data.currentCreditScore",
+                "$.checks.credit.data.previousCreditScore",
+                "$.checks.aml.data.error_type",
+                "$.checks.aml.data.error_code",
+                "$.checks.aml.data.error_message",
+                "$.checks.credit.data.error_type",
+                "$.checks.credit.data.error_code",
+                "$.checks.credit.data.error_message",
+                "$.checks.affordability.data.error_type",
+                "$.checks.affordability.data.error_code",
+                "$.checks.affordability.data.error_message",
+                "$.checks.aml.data.system_request_raw",
+                "$.checks.aml.data.system_response_raw",
+                "$.checks.aml.data.system_response_from_cache",
+                "$.checks.affordability.data.system_request_raw",
+                "$.checks.affordability.data.system_response_raw",
+                "$.checks.affordability.data.system_response_from_cache",
+                "$.checks.credit.data.system_request_raw",
+                "$.checks.credit.data.system_response_raw",
+                "$.checks.credit.data.system_response_from_cache"
+            ],
+            "checks":{
+                "defaults_affordability_credit_aml":{
+                "name":"Full Check",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type IN [renewal, new_business]",
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.credit.pass.value == approved",
+                        "$.checks.affordability.pass.value == approved"
+                        ]
+                    },
+                    {
+                        "conditions": [
+                        "$.agreement.transaction_type == MTA",
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.credit.pass.value == approved"
+                        ]
+                    }
+                    ],
+                    "rejected":[
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == rejected"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == rejected"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.credit.pass.value == rejected"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.credit.pass.value == approved",
+                        "$.checks.affordability.pass.value == rejected"
+                        ]
+                    }
+                    ],
+                    "referred":[
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == referred"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == referred"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.credit.pass.value == referred"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.credit.pass.value == approved",
+                        "$.checks.affordability.pass.value == referred"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "defaults_affordability":{
+                "name":"Defaults + Affordability",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.affordability.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "defaults_credit":{
+                "name":"Defaults + Credit",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.credit.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "defaults_aml":{
+                "name":"Defaults + AML",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "affordability_credit":{
+                "name":"Affordability + Credit",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.credit.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "affordability_aml":{
+                "name":"Affordability + AML",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.affordability.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "credit_aml":{
+                "name":"Credit + AML",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.credit.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "defaults_affordability_credit":{
+                "name":"Defaults + Affordability + Credit",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.credit.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "defaults_affordability_aml":{
+                "name":"Defaults + Affordability + AML",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.affordability.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "defaults_credit_aml":{
+                "name":"Defaults + Credit + AML",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.credit.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "affordability_credit_aml":{
+                "name":"Affordability + Credit + AML",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.credit.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "defaults":{
+                "name":"Defaults",
+                "default":true,
+                "visible_on_frontend":true,
+                "allow_pass_force":true,
+                "service_provider_environment":"default",
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    },
+                    "forced_pass":{
+                    "title":"Forced Pass",
+                    "value":"No"
+                    }
+                },
+                "endpoint":{
+                    "internal":"defaults"
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == renewal",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "$.checks.defaults.data.number_of_defaults_last_year.value < 3"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == MTA",
+                        "$.agreement.total_unpaids == 0",
+                        "$.agreement.agr_arrears <= 0"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "affordability":{
+                "name":"Affordability",
+                "visible_on_frontend":true,
+                "allow_pass_force":true,
+                "service_provider_environment":"default",
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    },
+                    "forced_pass":{
+                    "title":"Forced Pass",
+                    "value":"No"
+                    }
+                },
+                "endpoint":{
+                    "external":"affordability/check/"
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type IN [renewal, new_business]",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "credit":{
+                "name":"Credit",
+                "visible_on_frontend":true,
+                "allow_pass_force":true,
+                "service_provider_environment":"default",
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    },
+                    "forced_pass":{
+                    "title":"Forced Pass",
+                    "value":"No"
+                    }
+                },
+                "endpoint":{
+                    "external":"credit/check/"
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == MTA",
+                        "$.quote.mta_amount <= 0"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == MTA",
+                        "$.quote.mta_amount > 0",
+                        "$.agreement.agr_advance <= 25000",
+                        "$.agreement.mta_increases + $.quote.mta_amount <= 5000"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == MTA",
+                        "$.quote.mta_amount > 0",
+                        "$.agreement.agr_advance > 25000",
+                        "$.agreement.mta_increases + $.quote.mta_amount <= 10000",
+                        "$.agreement.mta_increases + $.quote.mta_amount <= 0.1 * $.agreement.agr_advance_plus_indirect_deposit"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type IN [renewal, new_business]",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "$.checks.credit.data.companyStatus.value == Active",
+                        "$.checks.credit.data.currentCreditRating.value IN [A, B, C]",
+                        "$.checks.credit.data.exactRegistered.value == 0",
+                        "$.agreement.agr_advance <= 5000"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type IN [renewal, new_business]",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "$.agreement.cancellation_type_code == PR",
+                        "$.checks.credit.data.companyStatus.value == Active",
+                        "$.checks.credit.data.currentCreditRating.value IN [A, B, C]",
+                        "$.checks.credit.data.exactRegistered.value == 0",
+                        "$.agreement.agr_advance <= 10000",
+                        "$.agreement.current_timestamp >= $.checks.credit.data.companyRegistrationTimeStamp.value + 63072000"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type IN [renewal, new_business]",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "$.agreement.cancellation_type_code == PR",
+                        "$.checks.credit.data.companyStatus.value == Active",
+                        "$.checks.credit.data.currentCreditRating.value IN [A, B, C]",
+                        "$.checks.credit.data.exactRegistered.value == 0",
+                        "$.agreement.agr_advance <= 25000",
+                        "$.checks.credit.data.creditLimit.value >= $.agreement.agr_advance",
+                        "$.agreement.current_timestamp >= $.checks.credit.data.companyRegistrationTimeStamp.value + 63072000"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "aml":{
+                "name":"AML",
+                "visible_on_frontend":true,
+                "allow_pass_force":true,
+                "service_provider_environment":"default",
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    },
+                    "forced_pass":{
+                    "title":"Forced Pass",
+                    "value":"No"
+                    },
+                    "fail_reason":{
+                    "title":"Fail Reason",
+                    "value":"-"
+                    }
+                },
+                "endpoint":{
+                    "external":"aml/check/"
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type IN [renewal, new_business]",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == MTA",
+                        "1 == 1"
+                        ]
+                    }
+                    ]
+                }
+                }
+            }
+            },
+            "experian":{
+            "name":"Experian",
+            "endpoint":{
+                "external":"http://127.0.0.1:8027/v1/"
+            },
+            "fields_display":[
+                "$.checks.aml.pass",
+                "$.checks.affordability.pass",
+                "$.checks.credit.pass",
+                "$.checks.defaults.pass",
+                "$.checks.defaults_affordability_credit_aml.pass",
+                "$.checks.defaults_affordability.pass",
+                "$.checks.defaults_credit.pass",
+                "$.checks.defaults_aml.pass",
+                "$.checks.affordability_credit.pass",
+                "$.checks.affordability_aml.pass",
+                "$.checks.credit_aml.pass",
+                "$.checks.defaults_affordability_credit.pass",
+                "$.checks.defaults_affordability_aml.pass",
+                "$.checks.defaults_credit_aml.pass",
+                "$.checks.affordability_credit_aml.pass",
+                "$.checks.defaults.forced_pass",
+                "$.checks.aml.forced_pass",
+                "$.checks.affordability.forced_pass",
+                "$.checks.credit.forced_pass",
+                "$.checks.aml.fail_reason",
+                "$.checks.defaults.data.number_of_defaults",
+                "$.checks.defaults.data.number_of_defaults_last_year",
+                "$.checks.aml.data.IDConfirmedLevel",
+                "$.checks.aml.data.AuthPlusDecision",
+                "$.checks.aml.data.U000",
+                "$.checks.aml.data.U007",
+                "$.checks.aml.data.U018",
+                "$.checks.credit.data.E5S051",
+                "$.checks.credit.data.EA1C01",
+                "$.checks.credit.data.NDSPCII",
+                "$.checks.credit.data.E1B07",
+                "$.checks.credit.data.EA5S01",
+                "$.checks.credit.data.EA1D01",
+                "$.checks.credit.data.EA4Q05",
+                "$.checks.credit.data.SPC24",
+                "$.checks.credit.data.E1A11",
+                "$.checks.credit.data.E1A06",
+                "$.checks.credit.data.E1B10",
+                "$.checks.credit.data.E1B11",
+                "$.checks.credit.data.E1A01",
+                "$.checks.credit.data.E1A02",
+                "$.checks.credit.data.E1A03",
+                "$.checks.credit.data.EA1D02",
+                "$.checks.credit.data.SPB111",
+                "$.checks.credit.data.SPA02",
+                "$.checks.credit.data.SPB323",
+                "$.checks.affordability.data.SPN91",
+                "$.checks.affordability.data.SPEDI",
+                "$.checks.affordability.data.SPM88",
+                "$.checks.affordability.data.SPI52",
+                "$.checks.aml.data.address_swapped",
+                "$.checks.aml.data.address_auto_fixed",
+                "$.checks.credit.data.address_swapped",
+                "$.checks.credit.data.address_auto_fixed",
+                "$.checks.affordability.data.address_swapped",
+                "$.checks.affordability.data.address_auto_fixed",
+                "$.checks.aml.data.reference_number",
+                "$.checks.affordability.data.reference_number",
+                "$.checks.credit.data.reference_number",
+                "$.checks.aml.data.error_type",
+                "$.checks.aml.data.error_code",
+                "$.checks.aml.data.error_message",
+                "$.checks.credit.data.error_type",
+                "$.checks.credit.data.error_code",
+                "$.checks.credit.data.error_message",
+                "$.checks.affordability.data.error_type",
+                "$.checks.affordability.data.error_code",
+                "$.checks.affordability.data.error_message",
+                "$.checks.aml.data.system_request_raw",
+                "$.checks.aml.data.system_response_raw",
+                "$.checks.aml.data.system_response_from_cache",
+                "$.checks.affordability.data.system_request_raw",
+                "$.checks.affordability.data.system_response_raw",
+                "$.checks.affordability.data.system_response_from_cache",
+                "$.checks.credit.data.system_request_raw",
+                "$.checks.credit.data.system_response_raw",
+                "$.checks.credit.data.system_response_from_cache",
+                "$.checks.aml.data.number_of_primary_data",
+                "$.checks.aml.data.oldest_primary_data",
+                "$.checks.aml.data.authenticate_index",
+                "$.checks.aml.data.primary_data_category",
+                "$.checks.aml.data.number_of_secondary_data",
+                "$.checks.aml.data.oldest_secondary_data",
+                "$.checks.aml.data.secondary_data_category"
+            ],
+            "checks":{
+                "defaults_affordability_credit_aml":{
+                "name":"Full Check",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type IN [renewal, new_business]",
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.credit.pass.value == approved"
+                        ]
+                    },
+                    {
+                        "conditions": [
+                        "$.agreement.transaction_type == MTA",
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.credit.pass.value == approved"
+                        ]
+                    }
+                    ],
+                    "rejected":[
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == rejected"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == rejected"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.credit.pass.value == rejected"
+                        ]
+                    }
+                    ],
+                    "referred":[
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == referred"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == referred"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.credit.pass.value == referred"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "defaults_affordability":{
+                "name":"Defaults + Affordability",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.affordability.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "defaults_credit":{
+                "name":"Defaults + Credit",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.credit.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "defaults_aml":{
+                "name":"Defaults + AML",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "affordability_credit":{
+                "name":"Affordability + Credit",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.credit.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "affordability_aml":{
+                "name":"Affordability + AML",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.affordability.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "credit_aml":{
+                "name":"Credit + AML",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.credit.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "defaults_affordability_credit":{
+                "name":"Defaults + Affordability + Credit",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.credit.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "defaults_affordability_aml":{
+                "name":"Defaults + Affordability + AML",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.affordability.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "defaults_credit_aml":{
+                "name":"Defaults + Credit + AML",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.defaults.pass.value == approved",
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.credit.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "affordability_credit_aml":{
+                "name":"Affordability + Credit + AML",
+                "visible_on_frontend":false,
+                "allow_pass_force":false,
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    }
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.aml.pass.value == approved",
+                        "$.checks.credit.pass.value == approved"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "defaults":{
+                "name":"Defaults",
+                "default":true,
+                "visible_on_frontend":true,
+                "allow_pass_force":true,
+                "service_provider_environment":"default",
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    },
+                    "forced_pass":{
+                    "title":"Forced Pass",
+                    "value":"No"
+                    }
+                },
+                "endpoint":{
+                    "internal":"defaults"
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == MTA",
+                        "$.quote.mta_amount <= 0"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == renewal",
+                        "$.checks.defaults.data.number_of_defaults_last_year.value < 3",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == MTA",
+                        "$.agreement.total_unpaids == 0",
+                        "$.agreement.agr_arrears <= 0"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "affordability":{
+                "name":"Affordability",
+                "visible_on_frontend":true,
+                "allow_pass_force":true,
+                "service_provider_environment":"default",
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    },
+                    "forced_pass":{
+                    "title":"Forced Pass",
+                    "value":"No"
+                    }
+                },
+                "endpoint":{
+                    "external":"affordability/check/"
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.company_serial == {{None}}",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [0, N, U]",
+                        "$.agreement.agr_advance <= 650",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.company_serial == {{None}}",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [0, N, U]",
+                        "$.agreement.agr_advance > 650",
+                        "$.checks.affordability.data.SPI52.value == 998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.company_serial == {{None}}",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [0, N, U]",
+                        "$.agreement.agr_advance > 650",
+                        "$.checks.affordability.data.SPI52.value != 998",
+                        "$.checks.affordability.data.SPI52.value <= 95",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.company_serial == {{None}}",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [0, N, U]",
+                        "$.agreement.agr_advance > 650",
+                        "$.checks.affordability.data.SPI52.value != 998",
+                        "$.checks.affordability.data.SPI52.value != -1",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.person_serial == {{None}}",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [0, N, U]",
+                        "$.agreement.agr_advance <= 1300",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.person_serial == {{None}}",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [0, N, U]",
+                        "$.agreement.agr_advance > 1300",
+                        "$.checks.affordability.data.SPI52.value == 998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.person_serial == {{None}}",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [0, N, U]",
+                        "$.agreement.agr_advance > 1300",
+                        "$.checks.affordability.data.SPI52.value != 998",
+                        "$.checks.affordability.data.SPI52.value <= 95",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.pseron_serial == {{None}}",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [0, N, U]",
+                        "$.agreement.agr_advance > 1300",
+                        "$.checks.affordability.data.SPI52.value != 998",
+                        "$.checks.affordability.data.SPI52.value != -1",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [1, N, U]",
+                        "$.checks.credit.data.E5S051.value >= 760",
+                        "$.checks.affordability.data.SPI52.value == 998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [1, N, U]",
+                        "$.checks.credit.data.E5S051.value >= 760",
+                        "$.checks.affordability.data.SPI52.value != 998",
+                        "$.checks.affordability.data.SPI52.value <= 95",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [1, N, U]",
+                        "$.checks.credit.data.E5S051.value >= 760",
+                        "$.checks.affordability.data.SPI52.value != 998",
+                        "$.checks.affordability.data.SPI52.value != -1",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [1, N, U]",
+                        "$.checks.credit.data.E5S051.value < 760",
+                        "$.checks.credit.data.E5S051.value != -998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "1 == 0"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value > 1",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value == 3",
+                        "$.checks.credit.data.E5S051.value >= 760",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value > 1",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value == 3",
+                        "$.checks.credit.data.E5S051.value < 760",
+                        "$.checks.credit.data.E5S051.value != -998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "1 == 0"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value > 1",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value != 3",
+                        "$.checks.affordability.data.SPM88.value != -1",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value > 1",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 < $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPEDI.value != -999998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [N, U]",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value == 3",
+                        "$.checks.credit.data.E5S051.value >= 760",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [N, U]",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value == 3",
+                        "$.checks.credit.data.E5S051.value < 760",
+                        "$.checks.credit.data.E5S051.value != -998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "1 == 0"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [N, U]",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value != 3",
+                        "$.checks.affordability.data.SPM88.value != -1",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [N, U]",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 < $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPEDI.value != -999998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.NDSPCII.value >= 40",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value == 3",
+                        "$.checks.credit.data.E5S051.value >= 760",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "1 == 0"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.NDSPCII.value >= 40",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value == 3",
+                        "$.checks.credit.data.E5S051.value < 760",
+                        "$.checks.credit.data.E5S051.value != -998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "1 == 0"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.NDSPCII.value >= 40",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value != 3",
+                        "$.checks.affordability.data.SPM88.value != -1",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "1 == 0"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.NDSPCII.value >= 40",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 < $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPEDI.value != -999998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "1 == 0"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == renewal",
+                        "$.checks.affordability.data.SPI52.value == 998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == renewal",
+                        "$.checks.affordability.data.SPI52.value != 998",
+                        "$.checks.affordability.data.SPI52.value <= 95",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "credit":{
+                "name":"Credit",
+                "visible_on_frontend":true,
+                "allow_pass_force":true,
+                "service_provider_environment":"default",
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    },
+                    "forced_pass":{
+                    "title":"Forced Pass",
+                    "value":"No"
+                    }
+                },
+                "endpoint":{
+                    "external":"credit/check/"
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == MTA",
+                        "$.quote.mta_amount <= 0"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == MTA",
+                        "$.agreement.agr_balance + $.quote.mta_amount <= 5000"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.company_serial == {{None}}",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [0, N, U]",
+                        "$.agreement.agr_advance <= 650",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.company_serial == {{None}}",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [0, N, U]",
+                        "$.agreement.agr_advance > 650",
+                        "$.checks.affordability.data.SPI52.value == 998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.company_serial == {{None}}",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [0, N, U]",
+                        "$.agreement.agr_advance > 650",
+                        "$.checks.affordability.data.SPI52.value != 998",
+                        "$.checks.affordability.data.SPI52.value <= 95",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.company_serial == {{None}}",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [0, N, U]",
+                        "$.agreement.agr_advance > 650",
+                        "$.checks.affordability.data.SPI52.value != 998",
+                        "$.checks.affordability.data.SPI52.value != -1",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.person_serial == {{None}}",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [0, N, U]",
+                        "$.agreement.agr_advance <= 1300",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.person_serial == {{None}}",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [0, N, U]",
+                        "$.agreement.agr_advance > 1300",
+                        "$.checks.affordability.data.SPI52.value == 998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.person_serial == {{None}}",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [0, N, U]",
+                        "$.agreement.agr_advance > 1300",
+                        "$.checks.affordability.data.SPI52.value != 998",
+                        "$.checks.affordability.data.SPI52.value <= 95",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.agreement.person_serial == {{None}}",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [0, N, U]",
+                        "$.agreement.agr_advance > 1300",
+                        "$.checks.affordability.data.SPI52.value != 998",
+                        "$.checks.affordability.data.SPI52.value != -1",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [1, N, U]",
+                        "$.checks.credit.data.E5S051.value >= 760",
+                        "$.checks.affordability.data.SPI52.value == 998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [1, N, U]",
+                        "$.checks.credit.data.E5S051.value >= 760",
+                        "$.checks.affordability.data.SPI52.value != 998",
+                        "$.checks.affordability.data.SPI52.value <= 95",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [1, N, U]",
+                        "$.checks.credit.data.E5S051.value >= 760",
+                        "$.checks.affordability.data.SPI52.value != 998",
+                        "$.checks.affordability.data.SPI52.value != -1",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [1, N, U]",
+                        "$.checks.credit.data.E5S051.value < 760",
+                        "$.checks.credit.data.E5S051.value != -998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "1 == 0"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value > 1",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value == 3",
+                        "$.checks.credit.data.E5S051.value >= 760",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value > 1",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value == 3",
+                        "$.checks.credit.data.E5S051.value < 760",
+                        "$.checks.credit.data.E5S051.value != -998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "1 == 0"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value > 1",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value != 3",
+                        "$.checks.affordability.data.SPM88.value != -1",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value > 1",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 < $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPEDI.value != -999998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [N, U]",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value == 3",
+                        "$.checks.credit.data.E5S051.value >= 760",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [N, U]",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value == 3",
+                        "$.checks.credit.data.E5S051.value < 760",
+                        "$.checks.credit.data.E5S051.value != -998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "1 == 0"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [N, U]",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value != 3",
+                        "$.checks.affordability.data.SPM88.value != -1",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.EA1C01.value == N",
+                        "$.checks.credit.data.NDSPCII.value < 40",
+                        "$.checks.credit.data.E1B07.value IN [N, U]",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 < $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPEDI.value != -999998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.NDSPCII.value >= 40",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value == 3",
+                        "$.checks.credit.data.E5S051.value >= 760",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "1 == 0"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.NDSPCII.value >= 40",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value == 3",
+                        "$.checks.credit.data.E5S051.value < 760",
+                        "$.checks.credit.data.E5S051.value != -998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "1 == 0"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.NDSPCII.value >= 40",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 > $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPM88.value != 3",
+                        "$.checks.affordability.data.SPM88.value != -1",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "1 == 0"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == new_business",
+                        "$.checks.credit.data.NDSPCII.value >= 40",
+                        "$.checks.affordability.data.SPEDI.value * 0.95 < $.agreement.agr_instalment",
+                        "$.checks.affordability.data.SPEDI.value != -999998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896",
+                        "1 == 0"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == renewal",
+                        "$.checks.affordability.data.SPI52.value == 998",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == renewal",
+                        "$.checks.affordability.data.SPI52.value != 998",
+                        "$.checks.affordability.data.SPI52.value <= 95",
+                        "$.agreement.agr_advance < 5000",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "aml":{
+                "name":"AML",
+                "visible_on_frontend":true,
+                "allow_pass_force":true,
+                "service_provider_environment":"default",
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    },
+                    "forced_pass":{
+                    "title":"Forced Pass",
+                    "value":"No"
+                    },
+                    "fail_reason":{
+                    "title":"Fail Reason",
+                    "value":"-"
+                    }
+                },
+                "endpoint":{
+                    "external":"aml/check/"
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.bwa.pass.value == approved"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type IN [renewal, new_business]",
+                        "$.checks.aml.data.IDConfirmedLevel.value == 1",
+                        "$.checks.aml.data.AuthPlusDecision.value IN [AU01, RA00]",
+                        "$.checks.aml.data.U007.value == -",
+                        "$.checks.aml.data.U018.value == -",
+                        "$.agreement.host_company_serial != 241008",
+                        "$.agreement.host_company_serial != 225008",
+                        "$.agreement.insurer_serial != 204009",
+                        "$.agreement.insurer_serial != 105896"
+                        ]
+                    },
+                    {
+                        "conditions":[
+                        "$.agreement.transaction_type == MTA",
+                        "1 == 1"
+                        ]
+                    }
+                    ]
+                }
+                },
+                "bwa":{
+                "name":"BWA",
+                "visible_on_frontend":true,
+                "allow_pass_force":true,
+                "service_provider_environment":"default",
+                "custom_fields":{
+                    "pass":{
+                    "title":"Result",
+                    "value":"referred"
+                    },
+                    "forced_pass":{
+                    "title":"Forced Pass",
+                    "value":"No"
+                    },
+                    "fail_reason":{
+                    "title":"Fail Reason",
+                    "value":"-"
+                    }
+                },
+                "endpoint":{
+                    "internal":"bank_checker"
+                },
+                "scenarios":{
+                    "approved":[
+                    {
+                        "conditions":[
+                        "$.checks.bwa.data.check_passed.value == true",
+                        "$.checks.bwa.data.force_pass.value == false"
+                        ]
+                    }
+                    ]
+                }
+                }
+            }
+            }
+        }
+    }
