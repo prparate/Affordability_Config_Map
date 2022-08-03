@@ -1,22 +1,23 @@
+definitions:
+  images:
+    - image: &baseAzure
+        name: premfinaukcontainerregistry.azurecr.io/docker/backend/pipeline_base_azure:1.7.1
+        username: $AZURE_REGISTRY_USERNAME
+        password: $AZURE_REGISTRY_PASSWORD
+
 pipelines:
   tags:
-    '**': # this runs as default for any tag not elsewhere defined
+    'v*.*.*': # expects tags with format v[0-9]+.[0-9]+.[0-9]+
       - step:
           name: Deploy Configmaps Develop
-          image:
-            name: premfinaukcontainerregistry.azurecr.io/docker/backend/pipeline_base_azure:1.5.1
-            username: $AZURE_REGISTRY_USERNAME
-            password: $AZURE_REGISTRY_PASSWORD
+          image: *baseAzure
           deployment: develop
           script:
             - cd v1
             - /bin/sh ./scripts/bash/pipeline-deploy.sh
       - step:
           name: Deploy Configmaps Staging
-          image:
-            name: premfinaukcontainerregistry.azurecr.io/docker/backend/pipeline_base_azure:1.5.1
-            username: $AZURE_REGISTRY_USERNAME
-            password: $AZURE_REGISTRY_PASSWORD
+          image: *baseAzure
           deployment: staging
           trigger: manual
           script:
@@ -24,10 +25,7 @@ pipelines:
             - /bin/sh ./scripts/bash/pipeline-deploy.sh
       - step:
           name: Deploy Configmaps Production
-          image:
-            name: premfinaukcontainerregistry.azurecr.io/docker/backend/pipeline_base_azure:1.5.1
-            username: $AZURE_REGISTRY_USERNAME
-            password: $AZURE_REGISTRY_PASSWORD
+          image: *baseAzure
           deployment: production
           trigger: manual
           script:
