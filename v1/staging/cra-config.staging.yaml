@@ -15,7 +15,6 @@ data:
             "uuid": "5e511577-406c-4cc4-9cb5-ba3caae6ce55",
             "name": "be__cra"
         },
-        "year_length": 365,
         "cle_environments": [
             "BENNUAT1",
             "TPFSUPP1",
@@ -46,7 +45,7 @@ data:
             "credit_safe":{
             "name":"Credit Safe",
             "endpoint":{
-                "external":"http://127.0.0.1:8044/v1/"
+                "external":"http://10.5.3.8:8044/v1/"
             },
             "fields_display":[
                 "$.checks.aml.pass",
@@ -629,7 +628,7 @@ data:
             "experian":{
             "name":"Experian",
             "endpoint":{
-                "external":"http://127.0.0.1:8027/v1/"
+                "external":"http://10.5.3.8:8027/v1/"
             },
             "fields_display":[
                 "$.checks.aml.pass",

@@ -15,7 +15,6 @@ data:
             "uuid": "5e511577-406c-4cc4-9cb5-ba3caae6ce55",
             "name": "be__cra"
         },
-        "year_length": 365,
         "cle_environments": [
             "DBTEST",
             "TPFUAT2",
