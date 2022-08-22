@@ -27,6 +27,5 @@ data:
   PF_AFFORDABILITY_SERVICE_HOSTNAME: "http://be-affordability-svc"
   PF_ID_UPLOAD_SERVICE_HOSTNAME: "be-id-upload-svc:8443"
   PF_AGREEMENT_FILES_SERVICE_HOSTNAME: "http://10.6.0.5:8017"  # We don't have a DNS for this service
-  #PF_CRA_SERVICE_HOSTNAME: "https://be-cra-svc"
   PF_CRA_SERVICE_HOSTNAME: "https://cra.internal.dev.premfina.com"
 
