@@ -8,27 +8,26 @@ definitions:
 pipelines:
   tags:
     'v*.*.*': # expects tags with format v[0-9]+.[0-9]+.[0-9]+
-      - parallel:
-        - step:
-            name: Deploy Configmaps Develop
-            image: *baseAzure
-            deployment: develop
-            script:
-              - cd v1
-              - /bin/sh ./scripts/bash/pipeline-deploy.sh
-        - step:
-            name: Deploy Configmaps Staging
-            image: *baseAzure
-            deployment: staging
-            trigger: manual
-            script:
-              - cd v1
-              - /bin/sh ./scripts/bash/pipeline-deploy.sh
-        - step:
-            name: Deploy Configmaps Production
-            image: *baseAzure
-            deployment: production
-            trigger: manual
-            script:
-              - cd v1
-              - /bin/sh ./scripts/bash/pipeline-deploy.sh
+      - step:
+          name: Deploy Configmaps Develop
+          image: *baseAzure
+          deployment: develop
+          script:
+            - cd v1
+            - /bin/sh ./scripts/bash/pipeline-deploy.sh
+      - step:
+          name: Deploy Configmaps Staging
+          image: *baseAzure
+          deployment: staging
+          trigger: manual
+          script:
+            - cd v1
+            - /bin/sh ./scripts/bash/pipeline-deploy.sh
+      - step:
+          name: Deploy Configmaps Production
+          image: *baseAzure
+          deployment: production
+          trigger: manual
+          script:
+            - cd v1
+            - /bin/sh ./scripts/bash/pipeline-deploy.sh
