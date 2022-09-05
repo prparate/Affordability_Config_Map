@@ -1,0 +1,8 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: affordability-config
+  namespace: dev-internal
+data:
+  APPINSIGHTS_INSTRUMENTATIONKEY: 9c4556c6-98a0-4192-923f-f72ed28ae4a7
+  FUNDED_CUSTOMER_ENVIRONMENT: TPFUAT2

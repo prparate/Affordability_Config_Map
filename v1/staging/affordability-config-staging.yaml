@@ -1,0 +1,8 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: affordability-config
+  namespace: staging-internal
+data:
+  APPINSIGHTS_INSTRUMENTATIONKEY: 5f894a7b-bc1a-4fe7-826b-85e80295e520
+  FUNDED_CUSTOMER_ENVIRONMENT: TPFTRN1
