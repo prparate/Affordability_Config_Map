@@ -1,0 +1,7 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: app-insights-config
+  namespace: prod-internal
+data:
+  APPINSIGHTS_INSTRUMENTATIONKEY: 3ad5865a-72a4-4332-8d03-e0a91a11969d

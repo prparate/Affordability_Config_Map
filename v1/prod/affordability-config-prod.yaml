@@ -1,0 +1,7 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: affordability-config
+  namespace: prod-internal
+data:
+  FUNDED_CUSTOMER_ENVIRONMENT: TPFPROD1
