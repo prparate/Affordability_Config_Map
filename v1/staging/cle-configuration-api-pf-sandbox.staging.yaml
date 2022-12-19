@@ -4,6 +4,7 @@ metadata:
   name: cle-configuration-api-pf-sandbox-configmap
   namespace: staging-internal
 data:
+  PF_SERVICE_NAME: "be__premfina_api__sandbox"
   PF_PROCESSORS_COUNT: "50"
   PF_WEBSOURCE: "bennetts"
   PF_DELAY_NEWAGREEMENTSFILE: "500"
