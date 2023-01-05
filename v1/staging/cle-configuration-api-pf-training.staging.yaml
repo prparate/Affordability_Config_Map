@@ -4,6 +4,7 @@ metadata:
   name: cle-configuration-api-pf-training-configmap
   namespace: staging-internal
 data:
+  PF_SERVICE_NAME: "be__premfina_api__training"
   PF_PROCESSORS_COUNT: "50"
   PF_WEBSOURCE: ""
   PF_DELAY_NEWAGREEMENTSFILE: "100"

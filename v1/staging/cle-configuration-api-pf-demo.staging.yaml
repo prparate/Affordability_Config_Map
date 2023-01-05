@@ -4,6 +4,7 @@ metadata:
   name: cle-configuration-api-pf-demo-configmap
   namespace: staging-internal
 data:
+  PF_SERVICE_NAME: "be__premfina_api__demo"
   PF_PROCESSORS_COUNT: "50"
   PF_WEBSOURCE: "avantia"
   PF_DELAY_NEWAGREEMENTSFILE: "100"
